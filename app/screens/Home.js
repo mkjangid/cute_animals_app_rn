@@ -14,7 +14,7 @@ class Card extends React.Component {
         return (
             <View style={styles.card}>
                 <Image style={styles.thumbnail} source={{uri: this.props.image}} />
-                <Text style={styles.text}>This is card {this.props.name}</Text>
+                <Text style={styles.text}>{this.props.name}</Text>
             </View>
         )
     }
@@ -35,15 +35,15 @@ class NoMoreCards extends React.Component {
 }
 
 const cards = [
-    {name: '1', image: 'https://media.giphy.com/media/GfXFVHUzjlbOg/giphy.gif'},
-    {name: '2', image: 'https://media.giphy.com/media/irTuv1L1T34TC/giphy.gif'},
-    {name: '3', image: 'https://media.giphy.com/media/LkLL0HJerdXMI/giphy.gif'},
-    {name: '4', image: 'https://media.giphy.com/media/fFBmUMzFL5zRS/giphy.gif'},
-    {name: '5', image: 'https://media.giphy.com/media/oDLDbBgf0dkis/giphy.gif'},
-    {name: '6', image: 'https://media.giphy.com/media/7r4g8V2UkBUcw/giphy.gif'},
-    {name: '7', image: 'https://media.giphy.com/media/K6Q7ZCdLy8pCE/giphy.gif'},
-    {name: '8', image: 'https://media.giphy.com/media/hEwST9KM0UGti/giphy.gif'},
-    {name: '9', image: 'https://media.giphy.com/media/3oEduJbDtIuA2VrtS0/giphy.gif'},
+    {name: 'Cutie 1', image: 'https://media.giphy.com/media/GfXFVHUzjlbOg/giphy.gif'},
+    {name: 'Cutie 2', image: 'https://media.giphy.com/media/irTuv1L1T34TC/giphy.gif'},
+    {name: 'Cutie 3', image: 'https://media.giphy.com/media/LkLL0HJerdXMI/giphy.gif'},
+    {name: 'Cutie 4', image: 'https://media.giphy.com/media/fFBmUMzFL5zRS/giphy.gif'},
+    {name: 'Cutie 5', image: 'https://media.giphy.com/media/oDLDbBgf0dkis/giphy.gif'},
+    {name: 'Cutie 6', image: 'https://media.giphy.com/media/7r4g8V2UkBUcw/giphy.gif'},
+    {name: 'Cutie 7', image: 'https://media.giphy.com/media/K6Q7ZCdLy8pCE/giphy.gif'},
+    {name: 'Cutie 8', image: 'https://media.giphy.com/media/hEwST9KM0UGti/giphy.gif'},
+    {name: 'Cutie 9', image: 'https://media.giphy.com/media/3oEduJbDtIuA2VrtS0/giphy.gif'},
 ];
 
 const cards2 = [
@@ -53,7 +53,11 @@ const cards2 = [
     {name: '13', image: 'https://media.giphy.com/media/OVHFny0I7njuU/giphy.gif'},
 ];
 
-export default class App extends React.Component {
+export default class Home extends React.Component {
+    static navigationOptions = {
+        header: null
+    };
+
     constructor(props) {
         super(props);
         this.state = {

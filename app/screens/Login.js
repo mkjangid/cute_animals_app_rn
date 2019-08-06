@@ -34,15 +34,16 @@ export default class Login extends Component {
         HTTPHelper('https://us-central1-cute-animals-820ab.cloudfunctions.net/auth',"POST",
             {user_id:this.state.userId,password:this.state.password})
             .then(responseData => {
-                //ToastAndroid.show(responseData.message);
-                Alert.alert(JSON.stringify(responseData));
+                ToastAndroid.show(responseData.message);
+                //Alert.alert(JSON.stringify(responseData));
                 this.setState({isLoading: false});
-                this.props.navigation.navigate('Home');
-
+                if (responseData.status.toLowerCase()==="ok"){
+                    this.props.navigation.navigate('Home');
+                }
             })
             .catch(error => {
                 ToastAndroid.show(JSON.stringify(error));
-                Alert.alert(JSON.stringify(error));
+                //Alert.alert(JSON.stringify(error));
                 this.setState({isLoading: false});
             });
     };
@@ -57,21 +58,17 @@ export default class Login extends Component {
         }
 
         return (
-            <View style={loginStyle.container }>
-                <ImageBackground source={require('../assets/logo.png')} style={loginStyle.backgroundImage}/>
+            <View style={loginStyle.container}>
                 <View style={loginStyle.loginForm }>
-                    <Item rounded style={{borderColor: '#8a572b'}}>
-                        <Input placeholder='User Id' onChangeText={(userId) => this.setState({userId})}/>
+                    <Item rounded style={loginStyle.inputOutline}>
+                        <Input style={loginStyle.inputText} placeholderTextColor='white' placeholder='User Id' onChangeText={(userId) => this.setState({userId})}/>
                     </Item>
-                    <View style={{margin:10}} />
-                    <Item rounded style={{borderColor: '#8a572b'}}>
-                        <Input placeholder='Password' secureTextEntry={true}
+                    <Item rounded style={loginStyle.inputOutline}>
+                        <Input style={loginStyle.inputText} placeholderTextColor='white' placeholder='Password' secureTextEntry={true}
                                onChangeText={(password) => this.setState({password})}/>
                     </Item>
-                    <View style={{margin:40}} />
-                    <Button rounded onPress={this.onLoginPressed} style={{backgroundColor:'#8a572b',
-                        justifyContent: 'center'}}>
-                        <Text style={{color:'white'}}>Login</Text>
+                    <Button block large rounded onPress={this.onLoginPressed} style={loginStyle.loginButton} textStyle={loginStyle.loginButtonText}>
+                        <Text>Login</Text>
                     </Button>
                 </View>
             </View>

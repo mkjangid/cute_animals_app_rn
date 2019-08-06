@@ -1,8 +1,12 @@
 import {StyleSheet} from "react-native";
+import theme from "./theme.style";
 
-export const styles = StyleSheet.create({
+export default styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: theme.PRIMARY_COLOR,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     backgroundImage: {
         flex: 1,
@@ -11,12 +15,28 @@ export const styles = StyleSheet.create({
         width: '100%'
     },
     loginForm: {
-        position: 'absolute',
-        top: 300,
-        bottom: 0,
-        left: 0,
-        right: 0,
-        paddingLeft:'15%',
-        paddingRight:'15%'
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
+    inputOutline:{
+        borderColor: 'white',
+        borderWidth:5,
+        color:'white',
+        marginTop:20,
+        width:'70%'
+    },
+    inputText:{
+        color:'white'
+    },
+    loginButton:{
+        backgroundColor: theme.SECONDARY_COLOR,
+        alignItems: 'center',
+        marginTop:50,
+        width:'70%'
+    },
+    loginButtonText:{
+        color:'white'
+    },
+
 });
