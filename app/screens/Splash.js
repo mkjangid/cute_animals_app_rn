@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { View, Text,Image } from 'react-native';
 
 class SplashScreen extends Component {
+    static navigationOptions = {
+        header: null
+    };
+
     performTimeConsumingTask = async() => {
         return new Promise((resolve) =>
             setTimeout(
@@ -24,7 +28,7 @@ class SplashScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Image source={require('/app/assets/splash_screen.png')} resizeMode="contain" />
+                <Image source={require('../assets/splash_screen.png')} style={styles.image}/>
             </View>
         );
     }
@@ -33,6 +37,12 @@ class SplashScreen extends Component {
 const styles = {
     container: {
         flex: 1
+    },
+    image:{
+        flex: 1,
+        resizeMode: 'cover', // or 'stretch',
+        alignSelf: 'stretch',
+        width: '100%'
     }
 };
 
