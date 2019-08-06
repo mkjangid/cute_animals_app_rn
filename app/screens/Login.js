@@ -11,7 +11,7 @@ import {
     Alert
 } from 'react-native';
 
-import { Container, Header, Content, Button, Text ,H1, H2, H3, Item, Input} from 'native-base';
+import { Container, Header, Content, Button, Text ,H1, H2, H3, Item, Input,Spinner} from 'native-base';
 import loginStyle from '../styles/loginStyles';
 import HTTPHelper from "../networking/HTTPHelper";
 
@@ -34,7 +34,7 @@ export default class Login extends Component {
         HTTPHelper('https://us-central1-cute-animals-820ab.cloudfunctions.net/auth',"POST",
             {user_id:this.state.userId,password:this.state.password})
             .then(responseData => {
-                ToastAndroid.show(responseData.message);
+                //ToastAndroid.show(responseData.message);
                 //Alert.alert(JSON.stringify(responseData));
                 this.setState({isLoading: false});
                 if (responseData.status.toLowerCase()==="ok"){
@@ -42,7 +42,7 @@ export default class Login extends Component {
                 }
             })
             .catch(error => {
-                ToastAndroid.show(JSON.stringify(error));
+                //ToastAndroid.show(JSON.stringify(error));
                 //Alert.alert(JSON.stringify(error));
                 this.setState({isLoading: false});
             });
@@ -51,8 +51,8 @@ export default class Login extends Component {
     render(){
         if(this.state.isLoading){
             return(
-                <View style={{flex: 1, padding: 20, justifyContent:'center'}}>
-                    <ActivityIndicator size="small" color="#00ff00" />
+                <View style={{flex: 1, justifyContent:'center', alignContent:'center'}}>
+                    <Spinner color='green' />
                 </View>
             )
         }
